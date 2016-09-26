@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>eirslett-frontend-maven-plugin</artifactId>
-        <groupId>com.github.slemarchand</groupId>
-        <version>jitpack-javanet-downloader-1.0.3</version>
+        <groupId>org.sonatype.oss</groupId>
+        <artifactId>oss-parent</artifactId>
+        <version>7</version>
     </parent>
     
     <modelVersion>4.0.0</modelVersion>
@@ -11,6 +11,7 @@
 	<groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
     <artifactId>frontend-plugin-core</artifactId>
     <packaging>jar</packaging>
+    <version>jitpack-javanet-downloader-1.0.2</version>
 
     <dependencies>
         <dependency>
@@ -43,4 +44,20 @@
             <version>1.7.5</version>
         </dependency>
     </dependencies>
+    
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>3.1</version>
+                    <configuration>
+                        <source>1.6</source>
+                        <target>1.6</target>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
