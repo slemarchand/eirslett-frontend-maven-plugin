@@ -11,7 +11,7 @@
 	<groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
     <artifactId>frontend-plugin-core</artifactId>
     <packaging>jar</packaging>
-    <version>jitpack-javanet-downloader-1.0.2</version>
+    <version>jitpack-javanet-downloader-1.0.4</version>
 
     <dependencies>
         <dependency>
