@@ -3,7 +3,7 @@
     <parent>
         <artifactId>eirslett-frontend-maven-plugin</artifactId>
         <groupId>com.github.slemarchand</groupId>
-        <version>jitpack-javanet-downloader-1.0</version>
+        <version>jitpack-javanet-downloader-1.0.1</version>
     </parent>
     
     <modelVersion>4.0.0</modelVersion>

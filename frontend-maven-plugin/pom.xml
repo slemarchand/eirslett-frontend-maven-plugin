@@ -4,7 +4,7 @@
     <parent>
         <artifactId>eirslett-frontend-maven-plugin</artifactId>
         <groupId>com.github.slemarchand</groupId>
-        <version>jitpack-javanet-downloader-1.0</version>
+        <version>jitpack-javanet-downloader-1.0.1</version>
     </parent>
 
 	<groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
@@ -25,7 +25,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
+            <groupId>com.github.slemarchand.eirslett-frontend-maven-plugins</groupId>
             <artifactId>frontend-plugin-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
