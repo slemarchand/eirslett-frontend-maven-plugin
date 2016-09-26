@@ -8,8 +8,8 @@
     </parent>
 
     <groupId>com.github.slemarchand</groupId>
-    <artifactId>frontend-maven-plugins</artifactId>
-    <version>1.0</version>
+    <artifactId>eirslett-frontend-maven-plugin</artifactId>
+    <version>jitpack-javanet-downloader-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <properties>

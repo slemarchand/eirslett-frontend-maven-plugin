@@ -4,13 +4,13 @@
 
     <groupId>com.github.eirslett</groupId>
     <artifactId>example</artifactId>
-    <version>0</version>
+    <version>jitpack-javanet-downloader-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <build>
         <plugins>
             <plugin>
-                <groupId>com.github.eirslett</groupId>
+                <groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
                 <!-- NB! Set <version> to the latest released version of frontend-maven-plugin, like in README.md -->
                 <version>@project.version@</version>
