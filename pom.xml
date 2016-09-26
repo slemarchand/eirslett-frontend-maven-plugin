@@ -7,8 +7,8 @@
         <version>7</version>
     </parent>
 
-    <groupId>com.github.eirslett</groupId>
-    <artifactId>frontend-plugins</artifactId>
+    <groupId>com.github.slemarchand</groupId>
+    <artifactId>frontend-maven-plugins</artifactId>
     <version>1.0</version>
     <packaging>pom</packaging>
 
