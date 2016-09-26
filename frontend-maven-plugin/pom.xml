@@ -4,7 +4,7 @@
     <parent>
         <artifactId>eirslett-frontend-maven-plugin</artifactId>
         <groupId>com.github.slemarchand</groupId>
-        <version>jitpack-javanet-downloader-1.0.1</version>
+        <version>jitpack-javanet-downloader-1.0.2</version>
     </parent>
 
 	<groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
