@@ -25,7 +25,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.github.slemarchand.eirslett-frontend-maven-plugins</groupId>
+            <groupId>com.github.slemarchand.eirslett-frontend-maven-plugin</groupId>
             <artifactId>frontend-plugin-core</artifactId>
             <version>${project.parent.version}</version>
         </dependency>
