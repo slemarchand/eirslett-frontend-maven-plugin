@@ -3,8 +3,10 @@ package com.github.eirslett.maven.plugins.frontend.lib;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.HttpURLConnection;
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 
@@ -56,13 +58,16 @@ final class DefaultFileDownloader implements FileDownloader {
                 FileUtils.copyFile(new File(downloadURI), new File(destination));
             }
             else {
-                CloseableHttpResponse response = execute(fixedDownloadUrl);
-                int statusCode = response.getStatusLine().getStatusCode();
+            	
+            	URL url = new URL(fixedDownloadUrl);
+            	HttpURLConnection httpConn = (HttpURLConnection) url.openConnection();
+            	int statusCode = httpConn.getResponseCode();
+           
                 if(statusCode != 200){
                     throw new DownloadException("Got error code "+ statusCode +" from the server.");
                 }
                 new File(FilenameUtils.getFullPathNoEndSeparator(destination)).mkdirs();
-                ReadableByteChannel rbc = Channels.newChannel(response.getEntity().getContent());
+                ReadableByteChannel rbc = Channels.newChannel(httpConn.getInputStream());
                 FileOutputStream fos = new FileOutputStream(destination);
                 fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
                 fos.close();
@@ -73,50 +78,5 @@ final class DefaultFileDownloader implements FileDownloader {
         catch (URISyntaxException e) {
             throw new DownloadException("Could not download "+fixedDownloadUrl, e);
         }
-    }
-
-    private CloseableHttpResponse execute(String requestUrl) throws IOException {
-        CloseableHttpResponse response;
-        Proxy proxy = proxyConfig.getProxyForUrl(requestUrl);
-        if (proxy != null) {
-            LOGGER.info("Downloading via proxy " + proxy.toString());
-            return executeViaProxy(proxy, requestUrl);
-        } else {
-            LOGGER.info("No proxy was configured, downloading directly");
-            response = buildHttpClient(null).execute(new HttpGet(requestUrl));
-        }
-        return response;
-    }
-
-    private CloseableHttpResponse executeViaProxy(Proxy proxy, String requestUrl) throws IOException {
-        final CloseableHttpClient proxyClient;
-        if (proxy.useAuthentication()){
-            CredentialsProvider credentialsProvider = new BasicCredentialsProvider();
-            credentialsProvider.setCredentials(
-                    new AuthScope(proxy.host, proxy.port),
-                    new UsernamePasswordCredentials(proxy.username, proxy.password)
-            );
-            proxyClient = buildHttpClient(credentialsProvider);
-        } else {
-            proxyClient = buildHttpClient(null);
-        }
-
-        final HttpHost proxyHttpHost = new HttpHost(proxy.host, proxy.port);
-
-        final RequestConfig requestConfig = RequestConfig.custom().setProxy(proxyHttpHost).build();
-
-        final HttpGet request = new HttpGet(requestUrl);
-        request.setConfig(requestConfig);
-
-        return proxyClient.execute(request);
-    }
-    
-    private CloseableHttpClient buildHttpClient(CredentialsProvider credentialsProvider) {
-    	return HttpClients.custom()
-    			.disableContentCompression()
-    			.useSystemProperties()
-    			.setDefaultCredentialsProvider(credentialsProvider)
-    			.build();
-    }
-    
+    }      
 }
